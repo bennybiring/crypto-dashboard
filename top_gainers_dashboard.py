@@ -9,6 +9,7 @@ st.title("Top 10 Gainers - Multi Exchange")
 def get_binance():
     url = "https://api.binance.com/api/v3/ticker/24hr"
     data = requests.get(url).json()
+    print(data)
     coins = [x for x in data if x["symbol"].endswith("USDT")]
     sorted_coins = sorted(coins, key=lambda x: float(x["priceChangePercent"]), reverse=True)
     top10 = sorted_coins[:10]
